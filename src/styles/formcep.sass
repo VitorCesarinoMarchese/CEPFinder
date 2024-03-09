@@ -1,0 +1,46 @@
+@use "variables"
+
+h2
+    color: variables.$white
+    font-size: 2rem
+    text-align: center
+    margin-bottom: 2rem
+    margin-top: 2rem
+form
+    display: flex
+    align-items: center
+    flex-direction: column
+    height: 300px
+    input
+        height: 50px
+        width: 350px
+        text-align: center
+        border: solid 0px variables.$cyan
+        border-radius: 15px
+        transition: border-width 0.1s ease-in-out
+        margin-bottom: 1rem
+        &:focus
+            outline-width: 0
+            border: solid 2px variables.$cyan
+    button
+        width: 350px
+        height: 50px
+        border-radius: 15px
+        border: none
+        background-color: variables.$cyan
+        color: variables.$white
+        transition: background-color 0.5s ease-in-out
+        cursor: pointer
+        margin-bottom: 1rem
+        &:hover
+            background-color: darken(variables.$cyan, 15)
+.resultados
+    display: flex
+    flex-direction: column
+    color: variables.$white
+    transition: opacity 0.5s ease-in-out
+    width: 350px
+    &.hidden
+        opacity: 0
+
+    
