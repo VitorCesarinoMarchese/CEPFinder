@@ -31,29 +31,18 @@ function FormRua() {
       siafi: "",
     },
   ]);
-  console.log(Res);
   const [hidden, setHidden] = useState("hidden");
-  const format = () => {
-    if (Cidade.match(/\s/g)) {
-      SetCidade(Cidade.replace(/\s/, "%20"));
-    }
-    if (Rua.match(/\s/g)) {
-      SetRua(Rua.replace(/\s/, "+"));
-    }
-  };
   const submit = async (e: any) => {
     e.preventDefault();
     try {
-      const fet = async () => {
-        await format();
-        const response = await fetch(
-          `https://viacep.com.br/ws/${Estado}/${Cidade}/${Rua}/json/`,
-          { method: "GET" }
-        );
-        const data = await response.json();
-        SetRes(data);
-      };
-      fet()
+      const response = await fetch(
+        `https://viacep.com.br/ws/${Estado}/${Cidade.replace(
+          /\s/g,
+          "%20"
+        )}/${Rua.replace(/\s/g, "+")}/json/`
+      );
+      const data = await response.json();
+      SetRes(data);
       setHidden("");
     } catch (e: any) {
       window.alert(e);
@@ -114,7 +103,7 @@ function FormRua() {
           onChange={(e) => SetRua(e.target.value)}
         />
         <button type="submit">Descobrir</button>
-        {/* <div className={`${hidden} resultados`}>
+        <div className={`${hidden} resultados`}>
           <div className="space-between">
             <b>Cidade:</b> <p>{Res[0].localidade}</p>
           </div>
@@ -127,7 +116,7 @@ function FormRua() {
           <div className="space-between">
             <b>CEP:</b> <p>{Res[0].cep}</p>
           </div>
-        </div> */}
+        </div>
       </form>
     </>
   );
