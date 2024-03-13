@@ -1,0 +1,14 @@
+@use 'variables'
+
+form
+    select
+        height: 50px
+        width: 350px
+        text-align: center
+        border: solid 0px variables.$cyan
+        border-radius: 15px
+        transition: border-width 0.1s ease-in-out
+        margin-bottom: 1rem
+        &:focus
+            outline-width: 0
+            border: solid 2px variables.$cyan

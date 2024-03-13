@@ -35,12 +35,21 @@ form
         &:hover
             background-color: darken(variables.$cyan, 15)
 .resultados
+    border: solid 3px variables.$cyan
     display: flex
     flex-direction: column
-    color: variables.$white
+    justify-content: center
+    padding: 10px 10px 10px 10px
+    color: #000
     transition: opacity 0.5s ease-in-out
     width: 350px
+    height: 100px
+    background-color: variables.$white
+    border-radius: 20px
     &.hidden
         opacity: 0
-
+    .space-between
+        display: flex
+        flex-direction: row
+        justify-content: space-between
     

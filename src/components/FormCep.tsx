@@ -3,9 +3,21 @@ import { textMarshal } from "text-marshal";
 import "../styles/formcep.sass";
 
 function FormCep() {
+  type IResult = {
+    cep: string;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    localidade: string;
+    uf: string;
+    ibge: string;
+    gia: string;
+    ddd: string;
+    siafi: string;
+  };
   const [cep, setCep] = useState("");
   const [hidden, setHidden] = useState("hidden");
-  const [res, setRes] = useState({
+  const [res, setRes] = useState<IResult>({
     cep: "",
     logradouro: "",
     complemento: "",
@@ -26,7 +38,7 @@ function FormCep() {
       setRes(data);
       setHidden("");
     } catch (e) {
-      console.error(e);
+      window.alert(e);
     }
   };
   const format = (e: any) => {
@@ -50,14 +62,24 @@ function FormCep() {
           value={cep}
           placeholder="00000-000"
           data-pattern="xxxxx-xxx"
+          autoComplete="off"
+          required
           onChange={format}
         />
         <button type="submit">Consultar</button>
         <div className={`${hidden} resultados`}>
-          <p>Localidade: {res.localidade}</p>
-          <p>Bairro: {res.bairro}</p>
-          <p>Logradouro: {res.logradouro}</p>
-          <p>CEP: {res.cep}</p>
+          <div className="space-between">
+            <b>Cidade:</b> <p>{res.localidade}</p>
+          </div>
+          <div className="space-between">
+            <b>Bairro:</b> <p>{res.bairro}</p>
+          </div>
+          <div className="space-between">
+            <b>Logradouro:</b> <p>{res.logradouro}</p>
+          </div>
+          <div className="space-between">
+            <b>CEP:</b> <p>{res.cep}</p>
+          </div>
         </div>
       </form>
     </>
