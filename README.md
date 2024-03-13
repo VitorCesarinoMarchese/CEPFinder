@@ -1,4 +1,4 @@
-# 🎯 CEPFinder
+# 🏠 CEPFinder
 A CEP Finder app that was made for my learning
 
 ## 💽 Isntalation
@@ -18,7 +18,6 @@ After running the terminal access localhost:5173 and now you can use my project
 ## ✅ Features
 - Find a Streat by CEP
 - Find a CEP by Streat
-
 
 ## 🖥️ Front-end
 React + TypeScript
